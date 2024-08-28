@@ -8,7 +8,7 @@ package body Test_Suite is
    package Caller is new AUnit.Test_Caller (Logic_Test);
 
    function Suite return Access_Test_Suite is
-      Ret : Access_Test_Suite := New_Suite;
+      Ret : constant Access_Test_Suite := New_Suite;
    begin
       AUnit.Test_Suites.Add_Test (
          Ret
@@ -20,8 +20,8 @@ package body Test_Suite is
       AUnit.Test_Suites.Add_Test (
          Ret
          , Caller.Create (
-            "Test_Logic : Update_Cell"
-            , Test_Update_Cell'Access
+            "Test_Logic : Evaluate_Cell"
+            , Test_Evaluate_Cell'Access
          )
       );
       return Ret;

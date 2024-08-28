@@ -11,6 +11,6 @@ package Game_Of_Life.Tests is
    overriding procedure Set_Up (L : in out Logic_Test);
 
    procedure Test_Update (L : in out Logic_Test);
-   procedure Test_Update_Cell (L : in out Logic_Test);
+   procedure Test_Evaluate_Cell (L : in out Logic_Test);
 
 end Game_Of_Life.Tests;

@@ -9,11 +9,12 @@ package Game_Of_Life is
    );
 
    procedure Update (L : in out Logic);
-   procedure Update_Cell (
-      L : in out Logic
-      ; C : in out Cell
+
+   function Evaluate_Cell (
+      C : in out Cell
       ; Living_Neighbours : Integer
-   );
+   )
+   return Cell_State;
 
 private
 
