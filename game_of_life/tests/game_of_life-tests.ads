@@ -12,5 +12,6 @@ package Game_Of_Life.Tests is
 
    procedure Test_Update (L : in out Logic_Test);
    procedure Test_Evaluate_Cell (L : in out Logic_Test);
+   procedure Test_Count_Living_Neighbours (L : in out Logic_Test);
 
 end Game_Of_Life.Tests;

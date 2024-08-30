@@ -89,4 +89,69 @@ package body Game_Of_Life.Tests is
 
    end Test_Evaluate_Cell;
 
+   procedure Test_Count_Living_Neighbours (L : in out Logic_Test) is
+      Dead_Cell : constant Cell := (
+         State => Game_Of_Life.Cell_State'(Dead)
+      );
+      Live_Cell : constant Cell := (
+         State => Game_Of_Life.Cell_State'(Alive)
+      );
+      GoL : Game_Of_Life.Logic := (
+         Row_Size => 9
+         , Game_Board => (others => Dead_Cell)
+      );
+      Center_Index : constant Integer := 41;
+
+      procedure Execute_Count (Expected : Integer) is
+         Count : Integer;
+      begin
+         Count := GoL.Count_Living_Neighbours (Center_Index);
+         Assert (
+            Count = Expected
+            , "Count is"
+               & Integer'Image (Count)
+               & " expected"
+               & Integer'Image (Expected)
+         );
+      end Execute_Count;
+
+   begin
+
+      Execute_Count (0);
+
+      GoL.Game_Board (22) := Live_Cell;
+      Execute_Count (0);
+
+      GoL.Game_Board (32) := Live_Cell;
+      Execute_Count (1);
+
+      GoL.Game_Board (50) := Live_Cell;
+      Execute_Count (2);
+
+      GoL.Game_Board (42) := Live_Cell;
+      Execute_Count (3);
+
+      GoL.Game_Board (40) := Live_Cell;
+      Execute_Count (4);
+
+      GoL.Game_Board (33) := Live_Cell;
+      Execute_Count (5);
+
+      GoL.Game_Board (51) := Live_Cell;
+      Execute_Count (6);
+
+      GoL.Game_Board (49) := Live_Cell;
+      Execute_Count (7);
+
+      GoL.Game_Board (31) := Live_Cell;
+      Execute_Count (8);
+
+      GoL.Game_Board (41) := Live_Cell;
+      Execute_Count (8);
+
+      GoL.Game_Board := (others => Live_Cell);
+      Execute_Count (8);
+
+   end Test_Count_Living_Neighbours;
+
 end Game_Of_Life.Tests;

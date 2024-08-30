@@ -9,3 +9,5 @@ maintainers-logins = ["weaslepalace"]
 executables = ["game_of_life"]
 [[depends-on]]
 aunit = "^23.0.0"
+[[depends-on]]
+asfml = "^2.5.3"
